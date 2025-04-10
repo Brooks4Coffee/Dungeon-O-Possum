@@ -7,23 +7,24 @@ using System;
 public class Exit : MonoBehaviour  {
 
     [Header("Pause Effect")]
-    [SerializeField] bool GameIsPaused = false;
+    [SerializeField] bool GameIsPaused = false; //bool - is game paused? 
 
     [Header("Trackers")]
-    public bool playerIsInteractable; 
+    public bool playerIsInteractable; //bool - is player in collider? 
 
     [Header("UI:")]
-    [SerializeField] GameObject LeaveMenu; 
-    [SerializeField] GameObject InteractPrompt; 
+    [SerializeField] GameObject LeaveMenu;       // UI - Leave area Menu
+    [SerializeField] GameObject InteractPrompt;  // UI - Interact Prompt
     
     [Header("Particle Systems:")]
-    [SerializeField] ParticleSystem PS_PlayerIsNear;
-    [SerializeField] ParticleSystem PS_GiveBlessings;
-    //instances of particle systems:
-    private ParticleSystem PS_PlayerIsNearInstance; 
-    private ParticleSystem PS_GiveBlessingsInstance;
+    [SerializeField] ParticleSystem PS_PlayerIsNear;     //particle system prefab
+    [SerializeField] ParticleSystem PS_GiveBlessings;    //particle system prefab
+    private ParticleSystem PS_PlayerIsNearInstance;     //instances of particle systems:     
+    private ParticleSystem PS_GiveBlessingsInstance;    //instances of particle systems:
 
-    void Start() {
+
+
+    void Awake() {
         LeaveMenu.SetActive(false);
         InteractPrompt.SetActive(false);
         playerIsInteractable = false; 
@@ -32,7 +33,7 @@ public class Exit : MonoBehaviour  {
 
     void Update() {
         if ((Input.GetKey(KeyCode.F)) && (playerIsInteractable)) {          //if player interacts: 
-            Pause();                            //  - pause game
+            Pause();                            //  - pause game (unpaused via button)
             InteractPrompt.SetActive(false);    //  - take down prompt from HUD
             LeaveMenu.SetActive(true);          //  - show Leave question
         }
@@ -67,11 +68,14 @@ public class Exit : MonoBehaviour  {
         Time.timeScale = 1.0f; 
         GameIsPaused = false;
     }
+
+    //Getter for paused state:
+    public bool GetPauseState() { return GameIsPaused; }
     
     
     // spawns a particle system 
     private void SpawnPlayerIsNearParticles() {
         PS_PlayerIsNearInstance = Instantiate(PS_PlayerIsNear, transform.position, Quaternion.identity); 
-        Destroy(PS_PlayerIsNearInstance, 10); //ensures it goes away
+        Destroy(PS_PlayerIsNearInstance, 5); //ensures it goes away
     }
 }

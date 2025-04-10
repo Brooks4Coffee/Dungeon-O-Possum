@@ -10,6 +10,8 @@ TagManager:
   - Collectable
   - Attack
   - Walls
+  - NPC
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - Enemy
   - Coins
   - Walls
-  - 
-  - 
+  - NPC
+  - Damageables
   - 
   - 
   - 
@@ -50,6 +52,12 @@ TagManager:
   - name: Background
     uniqueID: 509179109
     locked: 0
+  - name: water
+    uniqueID: 2529807895
+    locked: 0
+  - name: Foliage
+    uniqueID: 3805931615
+    locked: 0
   - name: Enemy
     uniqueID: 1489294979
     locked: 0
@@ -58,4 +66,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 584158429
+    locked: 0
+  - name: NPC
+    uniqueID: 1629484271
     locked: 0

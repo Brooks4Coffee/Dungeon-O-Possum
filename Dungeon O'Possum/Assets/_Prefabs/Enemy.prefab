@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 2396175033316204995}
   - component: {fileID: 8977519856002678348}
   - component: {fileID: 1688735336316272810}
-  - component: {fileID: 3197630233644680484}
   - component: {fileID: 4320949120827201471}
+  - component: {fileID: 3197630233644680484}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -195,13 +195,18 @@ MonoBehaviour:
   self: {fileID: 3197630233644680484}
   projLauncher: {fileID: 8977519856002678348}
   health: {fileID: 7015074786573808701}
-  target: {fileID: 0}
+  target: {fileID: 766314904708804345, guid: 4befb9fdb02060440b8c564c20fe7830, type: 3}
   enemyType: 0
   sightDistance: 5.7
   Time_IdleDuration: 1.25
   Time_PatrolDuration: 2.25
   patrolArea: 10
   attackRange: 8
+  Seed: 0
+  minIdleTime: 1.25
+  maxIdleTime: 2.25
+  minPatrolTime: 0.95
+  maxPatrolTime: 1.45
   obstacleMask:
     serializedVersion: 2
     m_Bits: 256
@@ -335,19 +340,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3197630233644680484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 280769616375193957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc5aa653df4a704f9341defc328c1ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!50 &4320949120827201471
 Rigidbody2D:
   serializedVersion: 4
@@ -375,6 +367,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3197630233644680484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280769616375193957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afc5aa653df4a704f9341defc328c1ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enAI: {fileID: 2396175033316204995}
+  idleDuratation: 0
+  patrolDuration: 0
+  idleTimer: 0
+  patrolTimer: 0
+  animator: {fileID: 7125778266703518803}
+  speed: 5
 --- !u!1 &3882053403254418604
 GameObject:
   m_ObjectHideFlags: 0

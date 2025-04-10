@@ -8,7 +8,7 @@ public class ScoreKeeper : MonoBehaviour  {
 
     [Header("Inventory")]
     [SerializeField] Inventory inventory; 
-    [SerializeField] TextMeshProUGUI coinText;      //used to update text
+    [SerializeField] TextMeshProUGUI coinText;          //used to update text
     [SerializeField] TextMeshProUGUI goodiesText;      //used to update text
 
     

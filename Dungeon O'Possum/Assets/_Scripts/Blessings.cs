@@ -103,7 +103,8 @@ public class Blessings : MonoBehaviour  {
         Resume();
         switch(blessingChoice) {
             case 1:
-                player.SetSpeed(1.25f);             //increase player's speed by 25%
+                player.SetWalkSpeed(1.25f);             //increase player's speed by 25%
+                player.SetSprintSpeed(1.25f);
                 break;
             case 2:
                 playerHealth.BlessCurrentHealth(1); //add one heart to players health and heal them 

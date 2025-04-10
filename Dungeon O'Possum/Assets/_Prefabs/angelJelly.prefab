@@ -349,6 +349,7 @@ MonoBehaviour:
   PS_PlayerIsNear: {fileID: 5935432387173551013, guid: e872b3f14bece4c409a2690269034636, type: 3}
   PS_GiveBlessings: {fileID: 5935432387173551013, guid: e872b3f14bece4c409a2690269034636, type: 3}
   playerIsInteractable: 0
+  playerHasRecievedBlessings: 0
 --- !u!1 &5775533710699312006
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +507,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1489294979
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0a4a98d06040c504186f7a8f4cec3b34, type: 3}
   m_Color: {r: 1, g: 0.380503, b: 0.97306937, a: 1}

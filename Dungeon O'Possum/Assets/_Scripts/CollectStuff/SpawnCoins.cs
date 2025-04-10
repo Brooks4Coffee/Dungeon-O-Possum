@@ -15,7 +15,7 @@ public class SpawnCoins : MonoBehaviour  {
      * Spawns Coins random number of times (1-5) where given transform just was
      */
     public void SpawnLoot (Transform transform, Vector2 attackDirection) {
-        int rand = Random.Range(1, 5);
+        int rand = Random.Range(1, 10);
         Quaternion spawnRotation = Quaternion.FromToRotation(Vector2.right, attackDirection);
         for (int i = 0; i < rand; i++) {
             GameObject coin = Instantiate(coinPrefab,  transform.position, spawnRotation);    

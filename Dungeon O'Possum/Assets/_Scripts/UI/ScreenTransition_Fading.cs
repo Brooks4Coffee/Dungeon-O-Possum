@@ -4,77 +4,58 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ScreenTransition_Fading : MonoBehaviour {
-    [Header("Image and Colors")]
-    [SerializeField] Image self; 
-    [SerializeField] Image Sword;
-    [SerializeField] Color startColor;
-    [SerializeField] Color fadeColor = Color.black;
 
 
-
-    [Header("Supporting Fields")]
-    [SerializeField] float fadeTime = 1; 
-    [SerializeField] float fadeSpeed = 0.01f; 
-    [SerializeField] bool fadeWhenOnStart = true; 
-    bool fadingNow = false; 
-    bool fallingDone = false; 
-
-
-     void Start(){
-        if(fadeWhenOnStart){
-            FadeTransition_IntoScene();
-        }
-    }
+    [SerializeField] Image transitionImage;
+    [SerializeField] Color transitionColor = Color.black;
+    [SerializeField] float transitionTime = 1;
+    [SerializeField] bool transitionOnStart = false;
+    bool transitioning = false;
+    bool doneWithTransition = false;
 
 
-    public void FadeTransition_IntoScene () {    //screen falls from top to cover scene
-        if (fadingNow) { return; }
-        fadingNow = true;
+    void Start() { if (transitionOnStart){ Transition_Entering(); } } //if entering scene, call corrosponding method
 
-        StartCoroutine(FadingIntoSceneRoutine()); 
-        IEnumerator FadingIntoSceneRoutine() {
-            float t = 0; 
-            while(t < fadeTime) {
+
+    //Transition for Entering a Scene
+    public void Transition_Entering()  {
+        if (transitioning) { return; }          //if in the middle of a transition already, return
+        transitioning = true;                   //set alert that we're transitioning to true
+        StartCoroutine(TransitionEnter());
+        IEnumerator TransitionEnter() {
+            float time = 0; 
+            while (time < transitionTime) {
                 yield return null; 
-                t += Time.deltaTime; 
-                self.color = new Color(fadeColor.r, fadeColor.g, fadeColor.b, 1f-(t/fadeTime));
-                //Sword.color = new Color(Sword.color.r, Sword.color.g, Sword.color.b, 1f-(t/fadeTime));
-                //transform.Translate(0, -fallSpeed, 0);
+                time += Time.deltaTime;
+                transitionImage.color = new Color(transitionColor.r, transitionColor.g, transitionColor.b, 1f-(time/transitionTime));
             }
-            self.color = Color.clear;
-            fadingNow = false; 
-            yield return null;             
-        }
-        //self.GetComponent<GameObject>().SetActive(false);
-        //Sword.GetComponent<GameObject>().SetActive(false);
-    }
-
-    public bool GetFallingDone(){  return fallingDone;  }
-
-
-
-    //Fade out of scene into given color. 
-    public void FadeTransition_OutOfScene() {    //screen fades
-        //self.GetComponent<GameObject>().SetActive(true);
-        //Sword.GetComponent<GameObject>().SetActive(true);
-        if (fadingNow) { return; }
-        fadingNow = true;
-
-        StartCoroutine(FadingOutOfSceneRoutine()); 
-        IEnumerator FadingOutOfSceneRoutine() {
-            float t = 0; 
-            while(t < fadeTime) {
-                yield return null; 
-                t += Time.deltaTime; 
-                self.color = new Color(self.color.r, self.color.g, self.color.b, t/fadeTime);
-                //Sword.color = new Color(Sword.color.r, Sword.color.g, Sword.color.b, t/fadeTime);
-                //transform.Translate(0, fadeSpeed, 0);
-            }
-            self.color = fadeColor;
-            fadingNow = false;  //we're now done fading so this action is completed
-            fallingDone = true;
+            transitionImage.color = Color.clear;    //clear any remaining color 
+            transitioning = false;                  //done with transition
             yield return null; 
-
         }        
     }
+
+
+    //Transition for Leaving a Scene
+    public void Transition_Leaving()  {
+        if (transitioning) { return; }  //if in the middle of a transition already, return
+        transitioning = true;           //set alert that we're transitioning to true
+        StartCoroutine(TransitionLeave());
+        IEnumerator TransitionLeave() {
+            float time = 0; 
+            while (time < transitionTime) {
+                yield return null; 
+                time += Time.deltaTime;
+                transitionImage.color = new Color(transitionColor.r, transitionColor.g, transitionColor.b, time/transitionTime);
+            }
+            transitionImage.color = transitionColor;
+            transitioning = false;  //done with transition
+            doneWithTransition = true; 
+            yield return null; 
+        }
+    }
+
+    //Getter for Whether the Transition_Leaving() method is complete
+    public bool GetDoneWithTransition(){ return doneWithTransition; }
 }
+

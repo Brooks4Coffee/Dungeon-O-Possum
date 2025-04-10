@@ -5,11 +5,12 @@ using UnityEngine;
 //Tutorial Used: https://www.youtube.com/watch?v=f75Wcwu33OY
 public class Coin : MonoBehaviour, ICollectable   {
 
-    //public static event Action OnCoinCollected;       //Event *** TO DO: Set Up Audio Manager to play coin collected noise
+    public static event HandleCoinCollection OnCoinCollected;    //Event
+    public delegate void HandleCoinCollection(ItemData item);    //delegate 
     Rigidbody2D rb;
-    bool hasTarget;
-    Vector3 targetPosition;
+    [SerializeField] bool hasTarget;
     [SerializeField] float moveSpeed = 5.0f;
+    Vector3 targetPosition;
 
 
     private void Awake() {

@@ -20,20 +20,12 @@ public class Health : MonoBehaviour  {
     [SerializeField] ParticleSystem PS_sprint;
 
 
-    /*
-     * 
-     */  
+    //
     void Awake() {
         currentHealth = maxHealth;
         isDead = false; 
     }
 
-
-    // void Update() {
-    //     if (Input.GetKeyDown(KeyCode.T)) {
-    //         TakeDamage(25);
-    //     }
-    // }
 
 
     //SETTERS: 
@@ -52,12 +44,9 @@ public class Health : MonoBehaviour  {
     }
 
 
-    /*
-     * 
-     */ 
+    //
     public void TakeDamage(float damage) {
         currentHealth -= damage;
-        //display this on UI/HUD healthbar
         if (currentHealth <= 0) {   //check if this damage dealth has killed this game object
             isDead = true; 
             death();
@@ -67,26 +56,17 @@ public class Health : MonoBehaviour  {
     }
 
 
-    /*
-     * 
-     */ 
+    // 
     public void UseHealingItem(float healing){
-        //*** TO DO: make one that heals you over time.
         float temp = currentHealth; 
         temp += healing; 
-        if (temp <= 100) {
-            SetCurrentHealth(temp);
-        }
-        else {
-            SetCurrentHealth(maxHealth); 
-        }
+        if (temp <= 100) { SetCurrentHealth(temp); }
+        else { SetCurrentHealth(maxHealth);  }
         //anim.SetTrigger("Heal");
     }
 
 
-    /*
-     * When entering collision 
-     */
+    //When entering collision 
     void OnTriggerEnter2D(Collider2D other){
     //     if (other.CompareTag("DamageObject")){
     //         Debug.Log("-25 Health!");
@@ -97,12 +77,9 @@ public class Health : MonoBehaviour  {
     }
     
  
-    /*
-     * On Death: destroy game object
-     */   
+    // On Death: destroy game object
     private void death() {
         //anim.SetTrigger("Death");
-        //*** TO DO: way to wait for animation to do its thing before destroying object
         Destroy( transform.root.gameObject ); //destroys player object
     }
 }

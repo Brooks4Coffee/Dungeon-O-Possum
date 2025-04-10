@@ -24,9 +24,8 @@ public class SettingsMenu : MonoBehaviour  {
      */
     void Start() {
         resolutions = Screen.resolutions;               //grab resolutions that the current PC can handle
-        try {
-           resolutionDropdown.ClearOptions();              //Clear Default Options on our dropdown 
-        } 
+        try {resolutionDropdown.ClearOptions();   }              //Clear Default Options on our dropdown 
+      
         catch(Exception) {}
         
         
@@ -54,28 +53,25 @@ public class SettingsMenu : MonoBehaviour  {
     }
 
 
-    /*
-     * Set's the Volume Level of Game (Master Volume)
-     *      *** TO DO: Create SetVolume functions for other groups
-     */
-    public void SetMasterVolume(float volume)  {
-        //Debug.Log("Volume: " + volume); 
-        //audioMixer.SetFloat("Volume", volume);                    //**Can't use what they did in video, the audiomixer is not linear. So, we use math...
+
+    public void SetMasterVolume(float volume)  {              
         MasterAudioMixer.SetFloat("Volume_Master", Mathf.Log10(volume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
     }
 
     public void SetMusicVolume(float volume)  {
-        //Debug.Log("Volume: " + volume); 
-        //audioMixer.SetFloat("Volume", volume);                    //**Can't use what they did in video, the audiomixer is not linear. So, we use math...
         MasterAudioMixer.SetFloat("Volume_Music", Mathf.Log10(volume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
     }
 
     public void SetUIVolume(float volume)  {
-        //Debug.Log("Volume: " + volume); 
-        //audioMixer.SetFloat("Volume", volume);                            //**Can't use what they did in video, the audiomixer is not linear. So, we use math...
         MasterAudioMixer.SetFloat("Volume_UI", Mathf.Log10(volume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
     }
+    public void SetSFXVolume(float volume)  {
+        MasterAudioMixer.SetFloat("Volume_SFX", Mathf.Log10(volume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
+    }
 
+    public void SetAmbientVolume(float volume)  {
+        MasterAudioMixer.SetFloat("Volume_Ambient", Mathf.Log10(volume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
+    }
 
 
 
