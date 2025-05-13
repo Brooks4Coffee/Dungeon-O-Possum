@@ -325,7 +325,8 @@ MonoBehaviour:
   animator: {fileID: 4384758455713031622}
   facingDirection: 3
   prevfacingDirection: 3
-  isMoving: 0
+  isAttack: 0
+  pc: {fileID: 2565113306549962204}
   audioClip_Sword: {fileID: 8300000, guid: 54d7ec5343ab3bb46a6484b63022f8ab, type: 3}
   audioSource_Sword: {fileID: 4450751845312851594}
   pitchRange: 0.2
@@ -333,10 +334,10 @@ MonoBehaviour:
   attackPoint: {fileID: 4182390232251042211}
   attackRange: 0.74
   attackDamage: 25
+  attackTimeCounter: 0
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1088
-  attackTimeCounter: 0
 --- !u!50 &5575869586323926157
 Rigidbody2D:
   serializedVersion: 4
