@@ -1,0 +1,58 @@
+Dialogue System: 
+
+
+Basic Components: 
+   -> Portrait (expressions)
+   -> Name Box (Who's talking)
+   -> Dialogue Box (where text is shown)
+
+
+3 Main Scripts: 
+   -> Dialogue Lines
+   -> Cutscene Activator 
+   -> Cutscene System
+
+
+Advanced: 
+   -> Dialogue Effects 
+   -> Choices
+   -> Portrait Updates
+   -> Event Triggers
+	- dialogue end
+	- fade to black
+	- display image
+	- remove text box
+	- switch scene
+	- etc
+
+
+
+
+The Dialogue Lines:
+This script handles calling movement from other script, text and type, portrait to display, name to display, and event triggers. 
+It is also a scriptable object that uses an array. 
+
+
+Cutscene Manager:
+Everything can be performed through a Cutscene Manager script. It will control the UI appearing, cycles through dialogue, and initiates other actions from other scripts
+
+
+Cutscene Activator: 
+  - Used to activate scenes (attach it to game objects you want to interact/talk to)
+  - Uses DialogueLines to make full cutscene
+  - Every activator IS its own cutscene
+
+
+Cutscene System: 
+  - Only ONE of these
+  - Handles everything that happens during the cutscene (eg, clicking to go to next dialogue line)
+  - Takes the dialogue lines from the cutscene activator and goes through them 1-by-1 based on player input
+	-> 
+
+
+
+
+
+
+
+

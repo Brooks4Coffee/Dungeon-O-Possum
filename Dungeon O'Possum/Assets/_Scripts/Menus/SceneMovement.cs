@@ -42,8 +42,8 @@ public class SceneMovement : MonoBehaviour  {
     
     //Leave current area with screen transition
     public void LeaveHere(string whereToGo)  {
-//        screenTransition.Transition_Leaving();          //Start Screen Transition for leaving scenes
-        StartCoroutine(DelayLeaveLevel(whereToGo));     //start Coroutine
+//        screenTransition.Transition_Leaving();            //Start Screen Transition for leaving scenes
+        StartCoroutine(DelayLeaveLevel(whereToGo));         //start Coroutine
         IEnumerator DelayLeaveLevel(string whereToGo) {
            // yield return new WaitUntil(()=>screenTransition.GetDoneWithTransition());   //wait for transition to happen
             yield return null; 

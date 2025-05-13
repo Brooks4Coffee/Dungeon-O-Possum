@@ -56,7 +56,7 @@ public class Player : MonoBehaviour {
             currentSpeed = SprintSpeed; 
             if (!areSprinting) {
                 areSprinting = true;
-                SpawnDustParticles(transform.right);
+                SpawnDustParticles(movement);
             }
         } 
         else { 
@@ -92,7 +92,7 @@ public class Player : MonoBehaviour {
     private void SpawnDustParticles(Vector2 sprintDirection) {
         Quaternion spawnRotation = Quaternion.FromToRotation(Vector2.right, sprintDirection);
         PS_dustTrailInstance = Instantiate(PS_dustTrail, transform.position, spawnRotation); 
-        Destroy(PS_dustTrailInstance, 0.5f); 
+        Destroy(PS_dustTrailInstance.gameObject, 1f); 
     }
 
 }
