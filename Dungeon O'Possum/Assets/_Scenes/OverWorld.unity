@@ -19542,11 +19542,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!82 &1194562759 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 618880682856135935, guid: 06971fb8e9ff0f34886c65a5a1555497, type: 3}
-  m_PrefabInstance: {fileID: 6150429738866929013}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1200105027
 GameObject:
   m_ObjectHideFlags: 0
@@ -29564,11 +29559,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!82 &1764007177 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1128072850719887202, guid: 06971fb8e9ff0f34886c65a5a1555497, type: 3}
-  m_PrefabInstance: {fileID: 6150429738866929013}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1769546900
 GameObject:
   m_ObjectHideFlags: 0
@@ -35755,14 +35745,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2046633986}
-    - target: {fileID: 1959346147001900475, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1261550532}
-    - target: {fileID: 4528718319213222647, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1764007177}
     - target: {fileID: 6241193704233087502, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -35847,14 +35829,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Menus and Transitions
       objectReference: {fileID: 0}
-    - target: {fileID: 7032106348696248168, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1194562759}
-    - target: {fileID: 8760166570488577567, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1209981807}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

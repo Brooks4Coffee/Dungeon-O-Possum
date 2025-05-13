@@ -3358,7 +3358,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 1
+  weight: 0.764
   sharedProfile: {fileID: 11400000, guid: ddbabe2cdab58e34296e52882e67fd82, type: 2}
 --- !u!4 &1034639551
 Transform:
@@ -9594,6 +9594,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 32191252773429069, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
+      propertyPath: HUD
+      value: 
+      objectReference: {fileID: 6866944082594175835}
+    - target: {fileID: 32191252773429069, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 865660624}
     - target: {fileID: 6241193704233087502, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
