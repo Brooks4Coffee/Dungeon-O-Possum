@@ -7,9 +7,9 @@ using UnityEngine;
 //                https://www.youtube.com/watch?v=geq7lQSBDAE
 public class Fish : MonoBehaviour, ICollectable  {
     
-    public static event HandleFishCollection onFishCollected;                 //Event
-    public delegate void HandleFishCollection(ItemData item);    //delegate 
-    public ItemData fishData;                                   //reference
+    public static event HandleFishCollection onFishCollected;           //Event
+    public delegate void HandleFishCollection(ItemData item);           //delegate 
+    public ItemData fishData;                                           //reference
     Vector3 targetPosition;
     [SerializeField] float moveSpeed = 5.0f;
     bool hasTarget;
@@ -33,7 +33,6 @@ public class Fish : MonoBehaviour, ICollectable  {
     }
 
     public void Collect() {
-        //Debug.Log("You've Collected Woods");
         Destroy(gameObject);
         onFishCollected?.Invoke(fishData);
     }

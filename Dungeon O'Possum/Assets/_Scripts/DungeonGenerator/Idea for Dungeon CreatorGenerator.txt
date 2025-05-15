@@ -1,0 +1,35 @@
+Idea for Dungeon Creator/Generator: 
+
+	- creator tab for making rooms:
+		-> floor tiles
+		-> wall tiles
+		-> rewards
+		-> enemies
+		-> events
+		-> lighting/special effects
+		-> where it will connect to another area (via door or hallway)
+
+
+	- Types of Rooms: 
+		-> Room (abstract): has the tiles, lighting, and connections
+		-> Rewards (abstract? inherits from room): treasure, weapon, 
+		-> Fighting (abstract? inherits from Room): enemy, level of enemy (grunts, elites, boss), loot they drop
+		-> Events(abstract? inherits from Room (and possibly rewards + fighting)): 
+			-> might be a fighting room, quest event, treasure, etc... think Slay the Spire "?" rooms 
+		-> Final reward + exit dungeon (inherits from Rewards? or just is rewards plus exit)
+		-> Trade/Store (inherits from room): buy shit with the gold you get during your run
+		https://youtu.be/mCKeSNdO_S0?t=470 
+
+
+	- Map making tab for dungeon generator: 
+		-> has a start, boss, and exit 
+		-> you can choose the number of nodes between the start and the boss
+		-> can do it by hand, or customize the percentages of which rooms appear more. 
+		-> This also can check if player is in a quest that requires a certain map/room and adds it
+
+
+	- Additional Features:
+		-> mini-map
+		-> map where you choose which direction to go like Slay the Spire, Cult of the Lamb, and probably more. 
+		-> "Fog of War" in map and/or mini-map (hides rooms until player discovers them, could make interesting challenge)
+		-> Coroutines when generating levels so it doesn't freeze

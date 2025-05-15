@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +30,7 @@ public class ScreenTransition_Fading : MonoBehaviour {
             }
             transitionImage.color = Color.clear;    //clear any remaining color 
             transitioning = false;                  //done with transition
+            gameObject.SetActive(false);
             yield return null; 
         }        
     }
@@ -39,6 +39,7 @@ public class ScreenTransition_Fading : MonoBehaviour {
     //Transition for Leaving a Scene
     public void Transition_Leaving()  {
         if (transitioning) { return; }  //if in the middle of a transition already, return
+        gameObject.SetActive(true);
         transitioning = true;           //set alert that we're transitioning to true
         StartCoroutine(TransitionLeave());
         IEnumerator TransitionLeave() {

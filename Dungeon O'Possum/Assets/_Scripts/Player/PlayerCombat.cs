@@ -14,7 +14,8 @@ public class PlayerCombat : MonoBehaviour  {
     [SerializeField] Animator animator;             //animator
     [SerializeField] public int facingDirection = 3; //auto set to right
     [SerializeField] public int prevfacingDirection = 3; //auto set to right
-    [SerializeField] public bool isMoving; 
+    [SerializeField] public bool isAttack; 
+    [SerializeField] PlayerControl pc; 
 
     [Header("Audio:")]
     [SerializeField] AudioClip audioClip_Sword; 
@@ -22,15 +23,15 @@ public class PlayerCombat : MonoBehaviour  {
     [Range(0, 1)]
     [SerializeField] float pitchRange = 0.2f;
 
-    [Header("Attack Configurations::")]
+    [Header("Attack Configurations:")]
     [SerializeField] float timeBetweenAttacks = 0.25f; 
     [SerializeField] Transform attackPoint;                 //local point on player where we attack from
     [SerializeField] float attackRange = 0.5f;              //radius range of our attacks
     [SerializeField] float attackDamage = 25.0f;            //how much damage we do on attack 
-    public LayerMask enemyLayers;                           //layer to detect enemies
     [SerializeField] float attackTimeCounter = 0.0f; 
     public bool ShouldBeDamaging { get; set; } = false; 
     private List<IDamageable> iDamageables = new List<IDamageable>(); 
+    public LayerMask enemyLayers;                           //layer to detect enemies
 
     [SerializeField] public bool diagonal = false;
     [SerializeField] public string direction = "None";
@@ -38,16 +39,18 @@ public class PlayerCombat : MonoBehaviour  {
     private void Start()
     {
         //animator = GetComponent<Animator>();  //was causing issues for some reason
-        attackTimeCounter = timeBetweenAttacks;
-        isAttack = false;
-    }
-    void Update() {
-        attackTimeCounter += Time.deltaTime;
+        attackTimeCounter = timeBetweenAttacks; 
+        isAttack = false; 
     }
 
-    
-    void FixedUpdate()  {
-        if ((Input.GetMouseButtonDown(0)) ) {   //check for left mouse click and timer
+    //NOTE: Something going on with attack animation not going into effect when walking animation/movement is happening
+    //      gotta figure out a fix for that... 
+    void Update() {
+        attackTimeCounter += Time.deltaTime;
+		if (pc.isInMinigame) { return; }
+        if ((Input.GetMouseButtonDown(0)) && (attackTimeCounter >= timeBetweenAttacks) ) {   //check for left mouse click and timer
+            //TODO: figure out how to add moving attacks... 
+            
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 attackDirection = (mousePosition - transform.position).normalized;
             TriggerAttackAnimations();
