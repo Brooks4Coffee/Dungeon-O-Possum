@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,7 +43,9 @@ public class MenuManager : MonoBehaviour  {
      */
     public void Resume() {
         pauseMenu.SetActive(false);
-        HUD.SetActive(true);
+        try  {  HUD.SetActive(true); }
+        catch(Exception) { /*Something went wrong or its already false*/}
+        
         Time.timeScale = 1.0f; 
         GameIsPaused = false;
     }
@@ -53,7 +56,8 @@ public class MenuManager : MonoBehaviour  {
      */
     public void Pause() {
         pauseMenu.SetActive(true);
-        HUD.SetActive(false);
+        try  {  HUD.SetActive(false); }
+        catch(Exception) { /*Something went wrong or its already false*/}
         Time.timeScale = 0.0f; 
         GameIsPaused = true; 
     }
@@ -63,7 +67,7 @@ public class MenuManager : MonoBehaviour  {
      */
     public void GoToMainMenu() {
         Debug.Log("Going to Main Menu");
-        SceneManager.LoadScene("0_MainMenu");
+        SceneManager.LoadScene("MainMenu");
         //StartCoroutine(LoadMenu());
     } 
 

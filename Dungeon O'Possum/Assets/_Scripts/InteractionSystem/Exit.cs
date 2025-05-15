@@ -11,6 +11,7 @@ public class Exit : MonoBehaviour  {
 
     [Header("Trackers")]
     public bool playerIsInteractable; //bool - is player in collider? 
+    [SerializeField] bool Do_We_Want_Particles;
 
     [Header("UI:")]
     [SerializeField] GameObject LeaveMenu;       // UI - Leave area Menu
@@ -44,7 +45,9 @@ public class Exit : MonoBehaviour  {
             Debug.Log("Ready To Leave?"); 
             InteractPrompt.SetActive(true); //show prompt to interact
             playerIsInteractable = true; 
-            SpawnPlayerIsNearParticles();   //spawn player is near particles
+            if (Do_We_Want_Particles) {
+                SpawnPlayerIsNearParticles();   //spawn player is near particles
+            }
         }
     }
     
@@ -76,6 +79,6 @@ public class Exit : MonoBehaviour  {
     // spawns a particle system 
     private void SpawnPlayerIsNearParticles() {
         PS_PlayerIsNearInstance = Instantiate(PS_PlayerIsNear, transform.position, Quaternion.identity); 
-        Destroy(PS_PlayerIsNearInstance, 5); //ensures it goes away
+        Destroy(PS_PlayerIsNearInstance.gameObject, 5); //ensures it goes away
     }
 }
