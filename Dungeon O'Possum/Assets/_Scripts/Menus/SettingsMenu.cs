@@ -8,7 +8,12 @@ using System;
 //Tutorial Used: https://www.youtube.com/watch?v=YOaYQrN1oYQ 
 public class SettingsMenu : MonoBehaviour  {
     [Header("Audio:")]
-    [SerializeField] AudioMixer masterAudioMixer;
+    [SerializeField] AudioMixer MasterAudioMixer;
+    [SerializeField] Slider masterSlider;
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider UISlider;
+    [SerializeField] Slider SFXSlider;
+    [SerializeField] Slider ambSlider;
 
     [Header("TextMeshPro:")]
     [SerializeField] TMPro.TMP_Dropdown resolutionDropdown;
@@ -60,23 +65,28 @@ public class SettingsMenu : MonoBehaviour  {
 
 
 
-    public void SetMasterVolume(float volume)  {              
-        masterAudioMixer.SetFloat("Volume_Master", Mathf.Log10(volume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
+    public void SetMasterVolume(float volume)  {   
+        float masterVolume = masterSlider.value;            
+        MasterAudioMixer.SetFloat("Volume_Master", Mathf.Log10(masterVolume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
     }
 
     public void SetMusicVolume(float volume)  {
-        masterAudioMixer.SetFloat("Volume_Music", Mathf.Log10(volume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
+        float musicVolume = musicSlider.value; 
+        MasterAudioMixer.SetFloat("Volume_Music", Mathf.Log10(musicVolume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
     }
 
-    public void SetUIVolume(float volume)  {
-        masterAudioMixer.SetFloat("Volume_UI", Mathf.Log10(volume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
+    public void SetUIVolume(float volume)  {  
+        float UIVolume = UISlider.value;  
+        MasterAudioMixer.SetFloat("Volume_UI", Mathf.Log10(UIVolume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
     }
-    public void SetSFXVolume(float volume)  {
-        masterAudioMixer.SetFloat("Volume_SFX", Mathf.Log10(volume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
+    public void SetSFXVolume(float volume)  {  
+        float SFXVolume = SFXSlider.value;  
+        MasterAudioMixer.SetFloat("Volume_SFX", Mathf.Log10(SFXVolume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
     }
 
-    public void SetAmbientVolume(float volume)  {
-        masterAudioMixer.SetFloat("Volume_Ambient", Mathf.Log10(volume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
+    public void SetAmbientVolume(float volume)  {  
+        float ambVolume = ambSlider.value;  
+        MasterAudioMixer.SetFloat("Volume_Ambient", Mathf.Log10(ambVolume) * 20);    //WORKING VERSION: keeps in mind non-linear audiomixer. 
     }
 
 
