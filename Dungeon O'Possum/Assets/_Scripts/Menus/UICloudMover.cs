@@ -5,8 +5,8 @@ public class UICloudMover : MonoBehaviour
 	[Header("Basic Variables:")]
 	public float speed = 50.0f;         // Current speed of clouds (per sec)
 	public float Ypos = 0.0f;           // Y position for reset
-	private float scale = 1.0f;          // Cloud size
-	private float resetDistance = 1700f; // Distance after which cloud resets
+	//private float scale = 1.0f;          // Cloud size
+	//private float resetDistance = 1700f; // Distance after which cloud resets
 
 	[Header("Randomizer Variables:")]
 	float minSpd = 10f;
@@ -30,7 +30,7 @@ public class UICloudMover : MonoBehaviour
 		rt = GetComponent<RectTransform>();
 		startX = rt.anchoredPosition.x; // Use the cloud's initial X as the starting point
 		// Get the original scale of the cloud
-    	scale = rt.localScale.x;
+    	//scale = rt.localScale.x;
 		speed = Random.Range(minSpd, maxSpd);
 		//scale = Random.Range(minScale, maxScale);
 	}

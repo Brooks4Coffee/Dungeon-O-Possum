@@ -48,6 +48,12 @@ public class SettingsMenu : MonoBehaviour  {
             }
         }
 
+		SetMasterVolume(0.5f);
+    	SetMusicVolume(1f);
+    	SetUIVolume(1f);
+    	SetSFXVolume(1f);
+    	SetAmbientVolume(1f);
+
         resolutionDropdown.AddOptions(options);             // takes List<string> argument
         resolutionDropdown.value = currentResolutionIndex;  // set current resolution to our default resolution
         resolutionDropdown.RefreshShownValue();             // refresh to see our default resolution
