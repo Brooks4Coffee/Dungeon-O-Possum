@@ -1,57 +1,64 @@
 using UnityEngine;
-using UnityEngine.UI;
+
+public class UICloudMover : MonoBehaviour
+{
+	[Header("Basic Variables:")]
+	public float speed = 50.0f;         // Current speed of clouds (per sec)
+	public float Ypos = 0.0f;           // Y position for reset
+	private float scale = 1.0f;          // Cloud size
+	private float resetDistance = 1700f; // Distance after which cloud resets
+
+	[Header("Randomizer Variables:")]
+	float minSpd = 10f;
+	float maxSpd = 27f;
+	float minY = -75f;
+	float maxY = 75f;
+	float minScale = 0.5f;
+	float maxScale = 1.5f;
+
+	[Header("References")]
+
+    [SerializeField] RectTransform resetPoint;
+	[SerializeField] RectTransform startPoint;
 
 
+	private RectTransform rt;
+	private float startX;
 
-public class UICloudMover  : MonoBehaviour  {
-    
-    [Header("Basic Variables:")]
-    [SerializeField]  float speed = 50.0f;        // the current speed of clouds (per sec)
-    [SerializeField]  float Ypos = 0.0f;        // the current Y position for reset
-    [SerializeField]  float scale = 1.0f;       // the current cloud size
+	void Start()
+	{
+		rt = GetComponent<RectTransform>();
+		startX = rt.anchoredPosition.x; // Use the cloud's initial X as the starting point
+		// Get the original scale of the cloud
+    	scale = rt.localScale.x;
+		speed = Random.Range(minSpd, maxSpd);
+		//scale = Random.Range(minScale, maxScale);
+	}
 
-    [Header("Randomizer Variables:")]
-    [SerializeField]  float minSpd = 50f;       // the min speed of clouds (per sec)
-    [SerializeField]  float maxSpd = 100f;      // the max speed of clouds (per sec)
-    [SerializeField]  float minY = -200f;       // the min Y position for reset
-    [SerializeField]  float maxY = 200f;        // the max Y position for reset
-    [SerializeField]  float minScale = 0.5f;    // the min cloud size
-    [SerializeField]  float maxScale = 1.5f;    // the max cloud size
+	void Update()
+	{
+		moveCloud();
 
-    private RectTransform rt;
-    [SerializeField]  private float screenWidth;
+		if (rt.anchoredPosition.x >= resetPoint.anchoredPosition.x)
+		{
+			ResetCloud();
+		}
+	}
 
+	void moveCloud()
+	{
+		rt.anchoredPosition += Vector2.right * speed * Time.deltaTime;
+	}
 
+	void ResetCloud()
+	{
+		float newX = startPoint.anchoredPosition.x; // To start point
+		Ypos = Random.Range(minY, maxY);
+		rt.anchoredPosition = new Vector2(newX, Ypos);
 
-    void Start()    {
-        rt = GetComponent<RectTransform>();     //grab current obj's r-transform
-        screenWidth = Screen.width;             //grab screen width
-    }
-
-
-    //will call necessary functions
-    void Update()   {
-        moveCloud();
-        if (rt.anchoredPosition.x > screenWidth - 2100) {  ResetCloud(); }
-    }
-
-
-    //Moves Cloud
-    void moveCloud() { rt.anchoredPosition += Vector2.right * speed * Time.deltaTime; }
-
-
-    //Resets and randomizes the cloud. 
-    void ResetCloud()    {
-        //Change Position
-        float startX = -rt.rect.width - 1000f;               // Set X to just off-screen left
-        Ypos = Random.Range(minY, maxY);                    // Set Y to Random Position between our variables
-        rt.anchoredPosition = new Vector2(startX, Ypos);    // -> Move Cloud to this position!
-          
-        //Change Speed
-        speed = Random.Range(minSpd, maxSpd);
-
-        //Change Scale
-        scale = Random.Range(minScale, maxScale);           // Random scale (uniform)
-        rt.localScale = new Vector3(scale, scale, 1f);      // -> Change Cloud Scale!
-    }
+		// Randomize speed and scale
+		speed = Random.Range(minSpd, maxSpd);
+		//scale = Random.Range(scale - 0.25f, maxScale + 0.25f);
+		//rt.localScale = new Vector3(scale, scale, 1f);
+	}
 }
