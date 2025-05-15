@@ -8,6 +8,9 @@ public class Player : MonoBehaviour {
     //Player RigidBody2D:
     Rigidbody2D rb;
 
+    [Header("Game Manager:")]
+    [SerializeField] GameManager gm; //store world position here 
+
     [Header("PlayerControl:")]
     [SerializeField] PlayerControl pc; 
     
