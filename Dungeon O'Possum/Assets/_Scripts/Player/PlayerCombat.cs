@@ -32,12 +32,14 @@ public class PlayerCombat : MonoBehaviour  {
     public bool ShouldBeDamaging { get; set; } = false; 
     private List<IDamageable> iDamageables = new List<IDamageable>(); 
 
+    [SerializeField] public bool diagonal = false;
+    [SerializeField] public string direction = "None";
 
-
-    private void Start() {
+    private void Start()
+    {
         //animator = GetComponent<Animator>();  //was causing issues for some reason
-        attackTimeCounter = timeBetweenAttacks; 
-        isMoving = false; 
+        attackTimeCounter = timeBetweenAttacks;
+        isAttack = false;
     }
     void Update() {
         attackTimeCounter += Time.deltaTime;
@@ -70,23 +72,38 @@ public class PlayerCombat : MonoBehaviour  {
      *      3 -  Right
      */ 
     private void TriggerAttackAnimations() {
-        switch(facingDirection) {                     //set trigger based on direction
-            case 0: 
-                animator.SetTrigger("Attack_Up");
-                break; 
-            case 1: 
-                animator.SetTrigger("Attack_Down");
-                break; 
-            case 2:
-                animator.SetTrigger("Attack_Left");
-                animator.SetBool("Left", true);     //that way we go to left instead of idle(right)
-                break; 
-            case 3: 
-                animator.SetTrigger("Attack");
-                break; 
-            default: 
-                break; 
+
+        Debug.Log(diagonal);
+        if (diagonal && direction == "Up")
+        {
+            animator.SetTrigger("Attack_Up");
         }
+        else if (diagonal && direction == "Down")
+        {
+            animator.SetTrigger("Attack_Down");
+        }
+        else
+        {
+            switch (facingDirection)
+            {                     //set trigger based on direction
+                case 0:
+                    animator.SetTrigger("Attack_Up");
+                    break;
+                case 1:
+                    animator.SetTrigger("Attack_Down");
+                    break;
+                case 2:
+                    animator.SetTrigger("Attack_Left");
+                    animator.SetBool("Left", true);     //that way we go to left instead of idle(right)
+                    break;
+                case 3:
+                    animator.SetTrigger("Attack");
+                    break;
+                default:
+                    break;
+            }
+        }
+        
         audioSource_Sword.pitch = Random.Range((1.0f - pitchRange), (1.0f + pitchRange)); //noise
         audioSource_Sword.Play(); 
     }

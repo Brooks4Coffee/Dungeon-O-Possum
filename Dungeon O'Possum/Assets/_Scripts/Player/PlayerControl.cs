@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour {
     [Header("Player:")]
     [SerializeField] Player player; 
 	[SerializeField] public bool isInMinigame = false;
+    [SerializeField] public bool diagonal = false;
 
     [Header("Animator:")]
     [SerializeField] Animator animator;   
@@ -31,6 +32,23 @@ public class PlayerControl : MonoBehaviour {
         Vector3 movement = Vector3.zero;
         float v_input = Input.GetAxis("Vertical");
         float h_input = Input.GetAxis("Horizontal"); 
+
+        if ((v_input > 0 && h_input > 0) || (v_input > 0 && h_input < 0))
+        {
+            playCombat.diagonal = true;
+            playCombat.direction = "Up";
+        }
+        else if ((v_input < 0 && h_input > 0) || (v_input < 0 && h_input < 0))
+        {
+            playCombat.diagonal = true;
+            playCombat.direction = "Down";
+        }
+        else
+        {
+            playCombat.diagonal = false;
+        }
+         //Debug.Log("diagonal PC: " + playCombat.diagonal); //checking what v_input actually is
+
         animationHandler(v_input, h_input); 
         movement += new Vector3(h_input, v_input, 0);
         

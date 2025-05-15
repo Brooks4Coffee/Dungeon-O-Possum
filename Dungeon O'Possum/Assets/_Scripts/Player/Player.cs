@@ -34,7 +34,7 @@ public class Player : MonoBehaviour {
 
     [Header("Particle Systems:")]
     [SerializeField] ParticleSystem PS_dustTrail;
-    private ParticleSystem PS_dustTrailInstance; 
+    private ParticleSystem PS_dustTrailInstance;
 
     //[Header("Weapon:")]
     //[SerializeField] CurrentWeapon currentweapon;
@@ -43,10 +43,12 @@ public class Player : MonoBehaviour {
 
 
 
-    void Awake() { 
+    void Awake()
+    {
         rb = GetComponent<Rigidbody2D>();
         currentSpeed = walkSpeed;
         canTakeDamage = true;
+        
     }
     
 
