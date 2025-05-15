@@ -42,6 +42,9 @@ public class FishingMiniGame : MonoBehaviour  {
     [SerializeField] string loseTxt;       
     [SerializeField] bool givenFish = false;            
       
+    [Header("Game Manager:")]
+    [SerializeField] GameManager gm; //send coin count and fish count
+
     [Header("Audio:")]
     [SerializeField] AudioSource audioSource;   //fishing sound
     [Range(0,1)]
@@ -86,6 +89,7 @@ public class FishingMiniGame : MonoBehaviour  {
     //     return !(fishBottom > catchTop || fishTop < catchBottom);
     // }
     
+    public void UpdateGMData() {  gm.addFish(1);    }
 
     
     void MoveFish()  {
@@ -116,6 +120,7 @@ public class FishingMiniGame : MonoBehaviour  {
         if (progressBar.value >= progressBar.maxValue)  {
             if (!givenFish) {
                 playerInventory.Add(fishy);
+                UpdateGMData();
                 givenFish = true;
             }
             Pause();

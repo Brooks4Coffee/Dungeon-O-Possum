@@ -6,25 +6,24 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour {
 
     [Header("Scene Transition:")]
-    [SerializeField] Animator fadeTransition;
+    [SerializeField] ScreenTransition_Fading fader;
+    [SerializeField] string startScene; 
 
     public void StartGame() {
-        //SceneManager.LoadScene("1_Tutorial");
+        fader.Transition_Leaving(); 
         StartCoroutine(LoadAdventure());
         IEnumerator LoadAdventure() {
-            fadeTransition.SetTrigger("End"); 
-            yield return new WaitForSeconds(1.5f); 
-            SceneManager.LoadScene("1_Tutorial");
+            yield return new WaitUntil(()=>fader.GetDoneWithTransition());
+            SceneManager.LoadScene(startScene);
         }
     }
 
 
     public void ExitGame() {
-        //Application.Quit();
+        fader.Transition_Leaving(); 
         StartCoroutine(LoadExit());
         IEnumerator LoadExit() {
-            fadeTransition.SetTrigger("End"); 
-            yield return new WaitForSeconds(1.5f); 
+            yield return new WaitUntil(()=>fader.GetDoneWithTransition());
             Application.Quit();
         }
     }

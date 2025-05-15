@@ -9,6 +9,10 @@ public class Inventory : MonoBehaviour  {
     public static Inventory instance;
     public static event Action<List<InventoryItem>> OnInventoryChange;
 
+
+    [Header("Game Manager:")]
+    [SerializeField] GameManager gm; //send coin count and fish count
+
     [Header("Coins:")]
     [SerializeField] int CoinsTotal;  //Total coins collected, does not count coins collected during adventure
     [SerializeField] int CoinsNew;    //reset to zero every new level, at end of level, add all to CoinsTotal
@@ -29,6 +33,13 @@ public class Inventory : MonoBehaviour  {
     }
 
 
+    //**************************        GM OPERATIONS     *****************************
+    
+
+    public void TakeFromGM(int fish, int coin) {
+        this.CoinsTotal = coin;
+        this.fishCount = fish;
+    }
 
     //***********************************COIN OPERATIONS***********************************
     //Getters
@@ -94,7 +105,4 @@ public class Inventory : MonoBehaviour  {
             }
         }    
     }
-
-
-
 }
