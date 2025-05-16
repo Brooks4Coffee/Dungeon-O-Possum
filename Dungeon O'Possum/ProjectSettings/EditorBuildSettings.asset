@@ -15,10 +15,10 @@ EditorBuildSettings:
     path: Assets/_Scenes/OverWorld_1.unity
     guid: 7e1b5fa57edccc349811ef75b23a147c
   - enabled: 1
-    path: Assets/_Scenes/AdventureGuild.unity
-    guid: 91686ebada7f4e74fbc9f09245b270ad
-  - enabled: 1
     path: Assets/_Scenes/OverWorld.unity
     guid: b9c7d477e9621ef419d5443a9afb501d
+  - enabled: 1
+    path: Assets/_Scenes/AdventureGuild.unity
+    guid: 91686ebada7f4e74fbc9f09245b270ad
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a1249fb97dcfed04db9fc22a2dc6b2d4, type: 2}
