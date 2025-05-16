@@ -10,6 +10,7 @@ public class Coin : MonoBehaviour, ICollectable   {
     Rigidbody2D rb;
     [SerializeField] bool hasTarget;
     [SerializeField] float moveSpeed = 5.0f;
+    //[]
     Vector3 targetPosition;
 
 
@@ -33,6 +34,7 @@ public class Coin : MonoBehaviour, ICollectable   {
     // Update is called once per frame
     public void Collect()  {
         Debug.Log("Coin Collected");
+        
         Destroy(gameObject);
         //OnCoinCollected?.Invoke();    //for event listeners
     }

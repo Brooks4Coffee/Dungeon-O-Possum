@@ -82,6 +82,6 @@ public class EnemyHealth : MonoBehaviour, IDamageable  {
     private void SpawnDamageParticles(Vector2 attackDirection) {
         Quaternion spawnRotation = Quaternion.FromToRotation(Vector2.right, attackDirection);
         PS_takeDamageInstance = Instantiate(PS_takeDamage, transform.position, spawnRotation); 
-        Destroy(PS_takeDamageInstance, 1); 
+        Destroy(PS_takeDamageInstance.gameObject, 1); 
     }
 }

@@ -53,10 +53,11 @@ public class Inventory : MonoBehaviour
 	public void AddToNewCoins(int Coins) { CoinsNew += Coins; }
 
 	//End Of Level Operation: add new coins to total and reset new coin count
-	public void AddUpAllCoins()
+	public int AddUpAllCoins()
 	{
 		CoinsTotal += CoinsNew;     //add coins we've collected during adventure to total coins
 		CoinsNew = 0;               //reset CoinsNew after adding it
+        return CoinsTotal;
 	}
 
 
