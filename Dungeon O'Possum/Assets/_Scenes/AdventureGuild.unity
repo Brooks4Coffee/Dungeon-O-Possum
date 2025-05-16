@@ -12653,7 +12653,7 @@ MonoBehaviour:
   NPC_NameUI: {fileID: 1333775112}
   NPC_name: BarKeep
   dialogueLines:
-  - How's Adventuring? \nNeed Anything?
+  - How's Adventuring? Need Anything?
   - Let me know if there's anything I can do
   dialogueIndex: 0
 --- !u!1660057539 &9223372036854775807
