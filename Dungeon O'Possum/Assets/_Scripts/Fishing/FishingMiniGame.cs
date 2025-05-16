@@ -47,8 +47,6 @@ public class FishingMiniGame : MonoBehaviour
 	[SerializeField] GameObject pauseMenu;
 	[SerializeField] GameObject settingsMenu;
 
-	[Header("Game Manager:")]
-	[SerializeField] GameManager gm; //send coin count and fish count
 
 	[Header("Audio:")]
 	[SerializeField] AudioSource audioSource;   //fishing sound
@@ -59,34 +57,29 @@ public class FishingMiniGame : MonoBehaviour
 	Vector2 initialFishPosition;
 
 
-	void Awake()
-	{
+	void Awake() {
 		initialFishPosition = fish.anchoredPosition;
 		EndGamePanel.SetActive(false);
 		progressBar.value = 40;  //make sure no saved progress from previous catches
 	}
 
-	void Start()
-	{
+	void Start() {
 		if (pauseMenu.activeSelf || settingsMenu.activeSelf) { return; }
 		prompt.ShowText(toPrompt);
 	}
 
-	void Update()
-	{
-		if (pauseMenu.activeSelf || settingsMenu.activeSelf)
-		{
+
+	void Update() {
+		if (pauseMenu.activeSelf || settingsMenu.activeSelf) {
 			return;
 		}
 		WantsToExitGame();
-		if (!inExitMenu)
-		{
+		if (!inExitMenu) {
 			PC.isInMinigame = true;
 			MoveFish();
 			ProgressUpdate();
 		}
-		else
-		{
+		else {
 			Pause();
 			EndGamePanel.SetActive(true);
 			msg.ShowText(quitTxt);
@@ -104,13 +97,9 @@ public class FishingMiniGame : MonoBehaviour
 	//     return !(fishBottom > catchTop || fishTop < catchBottom);
 	// }
 
-	public void UpdateGMData() { gm.addFish(1); }
 
-
-	void MoveFish()
-	{
-		if (Input.GetMouseButton(0))
-		{
+	void MoveFish()	{
+		if (Input.GetMouseButton(0)) {
 			audioSource.pitch = Random.Range(1f - pitchRange, 1f + pitchRange);
 			audioSource.Play();
 			if (fish.anchoredPosition.y >= maxY) { return; }
@@ -121,8 +110,7 @@ public class FishingMiniGame : MonoBehaviour
 			newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
 			fish.anchoredPosition = newPosition;
 		}
-		else
-		{
+		else {
 			if (fish.anchoredPosition.y <= minY) { return; }
 			Vector2 newPosition = fish.anchoredPosition + new Vector2(0, -1 * movedecaySpeed * Time.deltaTime);
 			newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
@@ -131,17 +119,13 @@ public class FishingMiniGame : MonoBehaviour
 	}
 
 
-	void ProgressUpdate()
-	{
+	void ProgressUpdate() {
 		if (AreOverlapping()) { progressBar.value += catchSpeed * 2; }
 		else { progressBar.value -= decaySpeed * 2; }
 
-		if (progressBar.value >= progressBar.maxValue)
-		{
-			if (!givenFish)
-			{
+		if (progressBar.value >= progressBar.maxValue)	{
+			if (!givenFish)	{
 				playerInventory.Add(fishy);
-				UpdateGMData();
 				givenFish = true;
 			}
 			Pause();
@@ -149,8 +133,7 @@ public class FishingMiniGame : MonoBehaviour
 			msg.ShowText(winTxt);
 		}
 
-		else if (progressBar.value <= 0)
-		{
+		else if (progressBar.value <= 0) {
 			Pause();
 			EndGamePanel.SetActive(true);
 			msg.ShowText(loseTxt);
@@ -165,12 +148,10 @@ public class FishingMiniGame : MonoBehaviour
 	public void Resume() { Time.timeScale = 1.0f; }
 
 	//Resets game
-	public void ResetMinigame()
-	{
+	public void ResetMinigame() {
 		EndGamePanel.SetActive(false);
 		Resume();
-		if (!inExitMenu)
-		{
+		if (!inExitMenu) {
 			progressBar.value = 28;
 			givenFish = false;
 			fish.anchoredPosition = initialFishPosition;
@@ -179,16 +160,13 @@ public class FishingMiniGame : MonoBehaviour
 	}
 
 
-	//GOT HELP WITH THIS PART===============================================
-	bool AreOverlapping()
-	{
+	bool AreOverlapping() {
 		Rect rectA = GetRected(sweetspot);
 		Rect rectB = GetRected(fish);
 		return rectA.Overlaps(rectB);        // Check if the two rectangles overlap
 	}
 
-	Rect GetRected(RectTransform rectTransform)
-	{
+	Rect GetRected(RectTransform rectTransform)	{
 		Vector3[] corners = new Vector3[4];
 		rectTransform.GetWorldCorners(corners);
 		Vector2 size = new Vector2(
@@ -199,10 +177,8 @@ public class FishingMiniGame : MonoBehaviour
 	}
 
 
-	void WantsToExitGame()
-	{
-		if (Input.GetKey(KeyCode.Q))
-		{
+	void WantsToExitGame()	{
+		if (Input.GetKey(KeyCode.Q)) {
 			inExitMenu = true;
 		}
 	}

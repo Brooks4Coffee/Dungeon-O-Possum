@@ -22014,6 +22014,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 359007858}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1384044472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 115347118661549303, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
+  m_PrefabInstance: {fileID: 936898692604285821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1384288131
 GameObject:
   m_ObjectHideFlags: 0
@@ -24781,6 +24786,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 359007858}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1543028897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1398750766053228565, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
+  m_PrefabInstance: {fileID: 936898692604285821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1551972120
 GameObject:
   m_ObjectHideFlags: 0
@@ -35120,9 +35130,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2046633985}
     - target: {fileID: 6559968708317378513, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1543028897}
+    - target: {fileID: 6559968708317378513, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1209981807}
+    - target: {fileID: 6559968708317378513, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
+      propertyPath: settingsMenu
+      value: 
+      objectReference: {fileID: 1384044472}
     - target: {fileID: 6559968708317378513, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
       propertyPath: playerInventory
       value: 
