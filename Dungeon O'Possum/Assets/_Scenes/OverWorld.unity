@@ -10996,7 +10996,8 @@ MonoBehaviour:
   playerIsInteractable: 0
   Do_We_Want_Particles: 0
   LeaveMenu: {fileID: 814517766}
-  InteractPrompt: {fileID: 936898692604285822}
+  InteractPrompt: {fileID: 9062658327583699297}
+  toPrompt: '''F'' To interact'
   PS_PlayerIsNear: {fileID: 7310833949781528310, guid: 8ea09a6c8e1a8f64ea5b565734aad9b7, type: 3}
   PS_GiveBlessings: {fileID: 7310833949781528310, guid: 8ea09a6c8e1a8f64ea5b565734aad9b7, type: 3}
 --- !u!1 &697504106
@@ -24203,7 +24204,8 @@ MonoBehaviour:
   playerIsInteractable: 0
   Do_We_Want_Particles: 0
   LeaveMenu: {fileID: 7450146270162403190}
-  InteractPrompt: {fileID: 936898692604285822}
+  InteractPrompt: {fileID: 9062658327583699297}
+  toPrompt: '''F'' To interact'
   PS_PlayerIsNear: {fileID: 7310833949781528310, guid: 8ea09a6c8e1a8f64ea5b565734aad9b7, type: 3}
   PS_GiveBlessings: {fileID: 7310833949781528310, guid: 8ea09a6c8e1a8f64ea5b565734aad9b7, type: 3}
 --- !u!1 &1503470397
@@ -33460,6 +33462,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3464118935753259303, guid: 4ed46dd343a1a9a42ae760addbc12503, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3464118935753259303, guid: 4ed46dd343a1a9a42ae760addbc12503, type: 3}
+      propertyPath: m_TagString
+      value: GM
+      objectReference: {fileID: 0}
     - target: {fileID: 4255010357614274139, guid: 4ed46dd343a1a9a42ae760addbc12503, type: 3}
       propertyPath: player
       value: 
@@ -34928,6 +34938,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToAdventureGuildMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 2024111617605425683, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3483069274143934076, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -35084,11 +35098,6 @@ PrefabInstance:
       addedObject: {fileID: 814517767}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
---- !u!1 &936898692604285822 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2024111617605425683, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
-  m_PrefabInstance: {fileID: 936898692604285821}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &936898692604285823 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6241193704233087502, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
@@ -35256,6 +35265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 2015660102}
   coinText: {fileID: 7845851434687796829}
+  gm: {fileID: 2066523461}
+  gmGO: {fileID: 0}
 --- !u!1 &5075776994452621559
 GameObject:
   m_ObjectHideFlags: 0
@@ -35679,7 +35690,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 155409099943967258, guid: 6a0b443e06fb7fc4189dd2a35460633c, type: 3}
   m_PrefabInstance: {fileID: 936898692604285821}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 936898692604285822}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40a916f09088a854bbcfff0440866e6f, type: 3}

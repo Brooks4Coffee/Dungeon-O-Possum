@@ -5,14 +5,16 @@ using UnityEngine;
 //Tutorials: https://www.youtube.com/watch?v=otqnmwfTg3I
 //
 public class Player : MonoBehaviour {
-    //Player RigidBody2D:
-    Rigidbody2D rb;
+
+    // private static Player instance;
+
 
     [Header("Game Manager:")]
     [SerializeField] GameManager gm; //store world position here 
 
     [Header("PlayerControl:")]
     [SerializeField] PlayerControl pc; 
+    Rigidbody2D rb;
     
     [Header("Health:")]
     [SerializeField] public Health health; 
@@ -46,8 +48,14 @@ public class Player : MonoBehaviour {
 
 
 
-    void Awake()
-    {
+    void Awake()   {
+        // if (instance == null)   {
+        //     instance = this;
+        //     DontDestroyOnLoad(gameObject);
+        // }
+        // else   {
+        //     Destroy(gameObject); // Prevent duplicates
+        // }
         rb = GetComponent<Rigidbody2D>();
         currentSpeed = walkSpeed;
         canTakeDamage = true;

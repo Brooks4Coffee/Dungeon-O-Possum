@@ -56,5 +56,8 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Dungeon O'Possum.sln"
+    "dotnet.defaultSolution": "Dungeon O'Possum.sln",
+    "dotnet.unitTestDebuggingOptions": {
+        
+    }
 }

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour    {
     
     [Header("Player:")]
     [SerializeField] Player player;
+    [SerializeField] GameObject playerGO; 
 
     [Header("Camera:")]
     [SerializeField] Camera mc; 
@@ -38,21 +39,41 @@ public class GameManager : MonoBehaviour    {
     [SerializeField] public bool CompletedQuest;            //will get implemented
     //eventually will include: level, health, statuses(poison or whatever), etc
 
+    
+
     string sceneName;
 
     
     void Awake()    {
-        Scene scene = SceneManager.GetActiveScene();
-        sceneName = scene.name;
         if (instance == null) { instance = this; } //if no instances active, make this one the active one across all scenes
         else {
             Debug.Log("GameManager already exists, destroying dopleganger: " + gameObject.name);
             Destroy(gameObject); 
         }
         DontDestroyOnLoad(gameObject); //prevents 'death'/reset of this game object when moving between scenes
-        if (sceneName != "AdventureGuild" && sceneName != "Dungeon") {
+        spawnPlayerHere();
+    }
+
+    public void spawnPlayerHere() {
+        Scene scene = SceneManager.GetActiveScene();
+        sceneName = scene.name;
+
+        //Overworld:
+        if (sceneName == "OverWorld") {
             awakenPlayer(); 
         }
+
+        // //Adventure's Guild: 
+        // if (sceneName == "AdventureGuild") {
+        //     player.transform.position = new Vector2(-0.36f, -3.27f);
+        //     mc.transform.position = new Vector2(-0.36f, -3.27f);
+        // }
+
+        // //Dungeon: 
+        // if (sceneName == "Dungeon") {
+        //     player.transform.position = new Vector2(-32.51f, 30.05f);
+        //     mc.transform.position = new Vector2(-32.51f, 30.05f);
+        // }        
     }
 
     void awakenPlayer() {
@@ -70,4 +91,13 @@ public class GameManager : MonoBehaviour    {
     //Getters
     public int getGold() {  return goldAmount;  }
     public int getFish() {  return fishAmount;  }
+
+
+    void OnEnable()   { SceneManager.sceneLoaded += OnSceneLoaded;   }
+    void OnDisable()  {  SceneManager.sceneLoaded -= OnSceneLoaded;  }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)  {
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+        player = playerGO.GetComponent<Player>();
+    }
 }

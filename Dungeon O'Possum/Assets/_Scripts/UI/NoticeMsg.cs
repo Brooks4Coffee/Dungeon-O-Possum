@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class NoticeMsg : MonoBehaviour  {
     
@@ -28,6 +29,9 @@ public class NoticeMsg : MonoBehaviour  {
     
 
     //Hide Notice Text
-    public void HideText(){ text.gameObject.SetActive(false); }  //set the reference to inactive state
+    public void HideText(){ 
+        try  {  text.gameObject.SetActive(false);   }
+        catch (Exception) { /*Something went wrong or its already false*/ }
+    }  //set the reference to inactive state
        
 }

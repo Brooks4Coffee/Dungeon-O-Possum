@@ -12,6 +12,7 @@ TagManager:
   - Walls
   - NPC
   - Water
+  - GM
   layers:
   - Default
   - TransparentFX

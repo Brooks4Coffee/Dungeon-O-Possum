@@ -15,7 +15,8 @@ public class Exit : MonoBehaviour  {
 
     [Header("UI:")]
     [SerializeField] GameObject LeaveMenu;       // UI - Leave area Menu
-    [SerializeField] GameObject InteractPrompt;  // UI - Interact Prompt
+    [SerializeField] NoticeMsg InteractPrompt;  // UI - Interact Prompt
+    [SerializeField] string toPrompt;
     
     [Header("Particle Systems:")]
     [SerializeField] ParticleSystem PS_PlayerIsNear;     //particle system prefab
@@ -27,7 +28,7 @@ public class Exit : MonoBehaviour  {
 
     void Awake() {
         LeaveMenu.SetActive(false);
-        InteractPrompt.SetActive(false);
+        InteractPrompt.HideText();    //  - take down prompt from HUD
         playerIsInteractable = false; 
     }
 
@@ -35,28 +36,25 @@ public class Exit : MonoBehaviour  {
     void Update() {
         if ((Input.GetKey(KeyCode.F)) && (playerIsInteractable)) {          //if player interacts: 
             Pause();                            //  - pause game (unpaused via button)
-            InteractPrompt.SetActive(false);    //  - take down prompt from HUD
+            InteractPrompt.HideText();    //  - take down prompt from HUD
             LeaveMenu.SetActive(true);          //  - show Leave question
         }
     }
 
     void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("Player")){
-            Debug.Log("Ready To Leave?"); 
-            InteractPrompt.SetActive(true); //show prompt to interact
             playerIsInteractable = true; 
-            if (Do_We_Want_Particles) {
-                SpawnPlayerIsNearParticles();   //spawn player is near particles
-            }
+            InteractPrompt.ShowText(toPrompt);
+            if (Do_We_Want_Particles) {   SpawnPlayerIsNearParticles();     }   //spawn player is near particles
         }
     }
     
     void OnTriggerExit2D(Collider2D other){
         if(other.CompareTag("Player")){
-            Debug.Log("Continue then..");   //hide prompt for interacting
             playerIsInteractable = false; 
-            try  {  InteractPrompt.SetActive(false); }
-            catch (Exception) { /*Something went wrong or its already false*/ }
+            InteractPrompt.HideText();
+           // try  {  InteractPrompt.HideText(); }
+           // catch (Exception) { /*Something went wrong or its already false*/ }
         }
     }
 

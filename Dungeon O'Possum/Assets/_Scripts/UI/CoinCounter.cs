@@ -14,6 +14,6 @@ public class CoinCounter : MonoBehaviour  {
      * this will update our tally on screen (upper right) to show how many asteroids we've shot down
      */
     void Update()  {
-        coinText.text = inventory.GetNewCoinCount().ToString();
+        coinText.text = inventory.GetTotalCoinCount().ToString();
     }
 }
